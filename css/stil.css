@@ -1,0 +1,439 @@
+:root {
+    --pozadina: #f4f7fb;
+    --bela: #ffffff;
+    --temna: #142235;
+    --tekst: #26364a;
+    --sekundaren-tekst: #7c8999;
+    --zelena: #a3e635;
+    --zelena-temna: #6b9f1d;
+    --linija: #e8edf3;
+    --senka: 0 12px 35px rgba(24, 42, 65, .06);
+    --radius: 18px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--pozadina);
+    color: var(--tekst);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+
+/* =========================================================
+   Главен распоред и навигација за мобилни и десктоп уреди
+   ========================================================= */
+.aplikacija { min-height: 100vh; }
+.stranicna-navigacija {
+    width: 250px;
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px 22px;
+    color: #dce6f2;
+    background: #101d2e;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin: 0 0 54px 5px;
+    color: #fff;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -.7px;
+    text-decoration: none;
+}
+.logo-ikona {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    border-radius: 11px;
+    background: var(--zelena);
+    color: #17230d;
+    font-size: 20px;
+}
+.logo-naglasok { color: var(--zelena); }
+.navigacija-naslov {
+    margin: 0 0 13px 10px;
+    color: #8291a4;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+}
+.navigacija-linkovi { display: grid; gap: 7px; }
+.navigacija-link {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 13px 12px;
+    border-radius: 10px;
+    color: #aab8c9;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: .2s ease;
+}
+.navigacija-link:hover, .navigacija-link.aktivna {
+    background: #22334a;
+    color: #fff;
+}
+.navigacija-link.aktivna { box-shadow: inset 3px 0 var(--zelena); }
+.navigacija-ikona { width: 19px; color: var(--zelena); font-size: 17px; text-align: center; }
+.navigacija-dno { margin-top: auto; }
+.pomos-karticka {
+    padding: 17px;
+    border: 1px solid #2b3c51;
+    border-radius: 14px;
+    background: #18283b;
+}
+.pomos-ikona { margin-bottom: 10px; color: var(--zelena); font-size: 21px; }
+.pomos-karticka strong { display: block; color: #fff; font-size: 12px; line-height: 1.5; }
+.pomos-karticka p { margin: 7px 0 0; color: #9eacbd; font-size: 11px; line-height: 1.6; }
+.verzija-aplikacija { display: block; margin: 22px 0 0 3px; color: #718197; font-size: 10px; }
+.glavna-sodrzina { max-width: 1600px; margin-left: 250px; padding: 39px 48px 25px; }
+.gorna-lenta { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 29px; }
+.nadnaslov, .sekcija-nadnaslov {
+    margin: 0 0 8px;
+    color: #8a98a9;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+h1, h2, p { overflow-wrap: anywhere; }
+h1 { margin: 0; color: var(--temna); font-size: clamp(25px, 3vw, 34px); letter-spacing: -1.2px; }
+.podnaslov { margin: 9px 0 0; color: var(--sekundaren-tekst); font-size: 13px; }
+
+/* =========================================================
+   Копчиња и картички со статистика
+   ========================================================= */
+.kopce {
+    display: inline-flex;
+    min-height: 43px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 17px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 750;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.kopce:hover { transform: translateY(-1px); }
+.kopce-glavno { background: var(--zelena); color: #1b2a10; box-shadow: 0 5px 13px rgba(163, 230, 53, .2); }
+.kopce-glavno:hover { background: #b2f04c; }
+.kopce-svetlo { border-color: #e4eaf0; background: #fff; color: #405168; }
+.kopce-svetlo:hover { background: #f8fafc; }
+.statistika-mreza { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px; margin-bottom: 22px; }
+.statistika-karticka, .sekcija-panel {
+    border: 1px solid #edf1f5;
+    border-radius: var(--radius);
+    background: var(--bela);
+    box-shadow: var(--senka);
+}
+.statistika-karticka { padding: 20px 22px; }
+.statistika-vrh { display: flex; align-items: center; justify-content: space-between; }
+.statistika-oznaka { color: #718096; font-size: 12px; font-weight: 650; }
+.statistika-ikona { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 10px; font-size: 17px; }
+.statistika-ikona.zelena { background: #effbdc; color: #679b1b; }
+.statistika-ikona.sina { background: #e9f3ff; color: #4785c8; }
+.statistika-ikona.portokalova { background: #fff2e8; color: #e38b43; }
+.statistika-broj { display: block; margin-top: 13px; color: #1b2a3e; font-size: 29px; letter-spacing: -.8px; }
+.statistika-broj small { color: #8b98a8; font-size: 12px; font-weight: 600; }
+.statistika-opis { display: block; margin-top: 4px; color: #9aa5b2; font-size: 10px; }
+
+/* =========================================================
+   Форми со податоци
+   ========================================================= */
+.sekcija-panel { margin-bottom: 22px; padding: 25px; }
+.sekcija-zaglavie { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 22px; }
+.sekcija-zaglavie h2, .modal-zaglavie h2 { margin: 0; color: #1b2a3e; font-size: 19px; letter-spacing: -.45px; }
+.sekcija-opis { margin: 7px 0 0; color: #8a97a7; font-size: 11px; }
+.status-oznaka { display: flex; align-items: center; gap: 7px; color: #82909f; font-size: 10px; white-space: nowrap; }
+.status-oznaka span { width: 7px; height: 7px; border-radius: 50%; background: #8bcf36; box-shadow: 0 0 0 4px #eff9e5; }
+.forma-mreza { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px; }
+.forma-mreza-tesna { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pole-grupa { display: grid; min-width: 0; gap: 8px; }
+.pole-grupa > span { color: #56667a; font-size: 11px; font-weight: 700; }
+.pole-vnes {
+    width: 100%;
+    min-height: 43px;
+    padding: 10px 12px;
+    border: 1px solid #e4eaf0;
+    border-radius: 9px;
+    outline: none;
+    background: #fbfcfe;
+    color: #34465b;
+    font-size: 12px;
+    transition: border .2s ease, box-shadow .2s ease;
+}
+.pole-vnes:focus { border-color: #a3d95a; box-shadow: 0 0 0 3px rgba(163, 230, 53, .13); }
+.pole-vnes::placeholder { color: #aab4c0; }
+.pole-tekst { resize: vertical; }
+
+/* =========================================================
+   Неделен распоред и картички за деновите
+   ========================================================= */
+.raspored-zaglavie { align-items: center; }
+.denovi-mreza { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.den-karticka { min-width: 0; overflow: hidden; border: 1px solid #e9eef3; border-radius: 13px; background: #fff; }
+.den-zaglavie { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 15px; border-bottom: 1px solid #edf1f5; background: #fbfcfe; }
+.den-ime { color: #27384d; font-size: 12px; font-weight: 800; }
+.den-vreme { color: #7c8999; font-size: 10px; white-space: nowrap; }
+.den-sodrzina { min-height: 70px; padding: 12px 14px; }
+.prazno-den { display: grid; min-height: 54px; place-items: center; color: #a1adba; font-size: 11px; text-align: center; }
+.vezba-red { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding: 9px 0; border-bottom: 1px solid #f0f3f6; }
+.vezba-red:last-child { border-bottom: 0; }
+.vezba-podatoci { min-width: 0; }
+.vezba-ime { display: block; color: #34465b; font-size: 11px; font-weight: 750; }
+.vezba-meta { display: block; margin-top: 4px; color: #96a2b0; font-size: 10px; line-height: 1.5; }
+.vezba-akcii { display: flex; flex-shrink: 0; gap: 4px; }
+.malo-kopce { display: grid; width: 27px; height: 27px; place-items: center; border: 0; border-radius: 7px; background: #f2f5f8; color: #6d7b8c; font-size: 12px; }
+.malo-kopce:hover { background: #e8f5d9; color: #5c8c1a; }
+.malo-kopce.izbrisi:hover { background: #fff0ed; color: #d65b4d; }
+.den-dno { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-top: 1px solid #edf1f5; color: #8996a5; font-size: 10px; }
+.den-dno strong { color: #53657a; }
+.zavrsni-dejstva { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin: 5px 0 25px; padding: 22px 24px; border-radius: var(--radius); background: #17283d; color: #fff; }
+.zavrsni-dejstva strong { font-size: 14px; }
+.zavrsni-dejstva p { margin: 6px 0 0; color: #a9b7c8; font-size: 11px; }
+.zavrsni-kopcinja { display: flex; flex-wrap: wrap; gap: 9px; }
+.podnozje { display: flex; justify-content: space-between; gap: 15px; padding: 5px 2px 15px; color: #9aa6b4; font-size: 10px; }
+
+/* =========================================================
+   Прозорец за додавање и уредување на вежби
+   ========================================================= */
+.pozadina-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 20px;
+    background: rgba(13, 25, 41, .62);
+    backdrop-filter: blur(4px);
+}
+.pozadina-modal.otvorena { display: flex; }
+.modal-prozor { width: min(100%, 520px); max-height: 92vh; overflow-y: auto; padding: 25px; border-radius: 17px; background: #fff; box-shadow: 0 25px 80px rgba(0,0,0,.2); }
+.modal-zaglavie { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 22px; }
+.modal-zatvori { width: 32px; height: 32px; border: 0; border-radius: 9px; background: #f2f5f8; color: #68788b; font-size: 22px; }
+#formaVezba { display: grid; gap: 15px; }
+.modal-dejstva { display: flex; justify-content: flex-end; gap: 9px; margin-top: 5px; }
+
+/* =========================================================
+   PDF Образец
+   ========================================================= */
+.pdf-obrazec { display: none; position: absolute; left: 0; top: 0; z-index: -1; width: 794px; box-sizing: border-box; padding: 42px; background: #fff; color: #26364a; font-family: Arial, sans-serif; }
+.pdf-glava { padding: 25px; border-radius: 12px; background: #142235; color: #fff; }
+.pdf-logo { color: #a3e635; font-size: 13px; font-weight: 800; letter-spacing: 2px; }
+.pdf-glava h1 { margin: 16px 0 6px; color: #fff; font-size: 28px; }
+.pdf-glava p { margin: 0; color: #d1dbe7; font-size: 12px; }
+.pdf-info { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 22px 0; }
+.pdf-info-karticka { padding: 13px; border: 1px solid #e6ebf0; border-radius: 8px; }
+.pdf-info-karticka small { display: block; margin-bottom: 5px; color: #8491a0; font-size: 9px; text-transform: uppercase; }
+.pdf-info-karticka strong { color: #26364a; font-size: 12px; }
+.pdf-den { margin: 16px 0; page-break-inside: avoid; }
+.pdf-den h2 { padding: 10px 12px; border-radius: 6px; background: #eef6e3; color: #263b19; font-size: 14px; }
+.pdf-tabela { width: 100%; border-collapse: collapse; font-size: 10px; }
+.pdf-tabela th, .pdf-tabela td { padding: 8px; border: 1px solid #e5eaf0; text-align: left; vertical-align: top; }
+.pdf-tabela th { background: #f4f7fa; color: #526174; }
+.pdf-vkupno { margin-top: 20px; padding: 15px; border-radius: 8px; background: #142235; color: #fff; font-size: 12px; }
+.pdf-zabeleska { margin-top: 15px; color: #68788b; font-size: 10px; line-height: 1.6; }
+.pdf-podnozje { margin-top: 25px; padding-top: 12px; border-top: 1px solid #e5eaf0; color: #98a3b0; font-size: 9px; text-align: center; }
+
+/* =========================================================
+   Респонзивност за различни уреди
+   ========================================================= */
+@media (max-width: 1100px) {
+    .glavna-sodrzina { padding: 32px 27px; }
+    .stranicna-navigacija { width: 220px; }
+    .glavna-sodrzina { margin-left: 220px; }
+    .forma-mreza { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+    .stranicna-navigacija { position: static; width: auto; padding: 15px 18px; }
+    .logo { margin: 0; }
+    .navigacija-naslov, .navigacija-dno { display: none; }
+    .navigacija-linkovi { display: flex; gap: 5px; margin-top: 13px; overflow-x: auto; }
+    .navigacija-link { flex: 0 0 auto; padding: 9px 11px; font-size: 11px; }
+    .glavna-sodrzina { margin-left: 0; padding: 25px 17px; }
+    .gorna-lenta { align-items: flex-start; }
+    .gorna-lenta > .kopce { flex-shrink: 0; }
+    .statistika-mreza { gap: 9px; }
+    .statistika-karticka { padding: 14px; }
+    .statistika-broj { font-size: 24px; }
+    .statistika-opis { line-height: 1.4; }
+    .sekcija-panel { padding: 18px; }
+    .denovi-mreza { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+    .gorna-lenta { flex-direction: column; }
+    .gorna-lenta > .kopce { width: 100%; }
+    .statistika-mreza { grid-template-columns: 1fr; }
+    .statistika-karticka { display: grid; grid-template-columns: 1fr auto; align-items: center; }
+    .statistika-vrh { display: contents; }
+    .statistika-ikona { grid-column: 2; grid-row: 1 / span 2; }
+    .statistika-broj { margin-top: 5px; }
+    .statistika-opis { grid-column: 1 / -1; }
+    .forma-mreza, .forma-mreza-tesna { grid-template-columns: 1fr; }
+    .sekcija-zaglavie { align-items: flex-start; flex-direction: column; }
+    .status-oznaka { white-space: normal; }
+    .zavrsni-dejstva { align-items: stretch; flex-direction: column; padding: 19px; }
+    .zavrsni-kopcinja { display: grid; grid-template-columns: 1fr; }
+    .podnozje { flex-direction: column; }
+    .modal-prozor { padding: 19px; }
+    .modal-dejstva { flex-direction: column-reverse; }
+    .modal-dejstva .kopce { width: 100%; }
+}
+
+
+/* Полиња за сопствена вежба - по избор на корисник */
+[hidden] { display: none !important; }
+.sopstvena-vezba { gap: 9px; }
+.sopstvena-vezba .pole-vnes { width: 100%; }
+.pole-pomos { color: var(--tekst-sekundaren, #8492a6); font-size: 11px; line-height: 1.5; }
+
+/* =========================================================
+   Дел со анимации и ефекти
+   ========================================================= */
+:root {
+    --pozadina: #080e18;
+    --bela: #111c2b;
+    --temna: #f4f8ff;
+    --tekst: #dce6f3;
+    --sekundaren-tekst: #91a1b5;
+    --zelena: #b7f34a;
+    --zelena-temna: #8dc52c;
+    --linija: rgba(155, 180, 210, .13);
+    --senka: 0 18px 55px rgba(0, 0, 0, .24);
+    --radius: 20px;
+}
+body {
+    background:
+      radial-gradient(ellipse at 78% 4%, rgba(129, 191, 43, .10), transparent 29%),
+      radial-gradient(ellipse at 12% 38%, rgba(35, 112, 150, .10), transparent 32%),
+      #080e18;
+    color: var(--tekst);
+}
+body::before {
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    opacity: .16;
+    background-image: radial-gradient(rgba(190, 220, 255, .22) .7px, transparent .7px);
+    background-size: 24px 24px;
+    mask-image: linear-gradient(to bottom, black, transparent 82%);
+}
+.stranicna-navigacija {
+    background: linear-gradient(180deg, #101d2c 0%, #0b1421 100%);
+    border-right: 1px solid rgba(183, 243, 74, .12);
+    box-shadow: 12px 0 45px rgba(0,0,0,.18);
+}
+.logo-ikona { box-shadow: 0 0 25px rgba(183,243,74,.28); transition: transform .35s, box-shadow .35s; }
+.logo:hover .logo-ikona { transform: rotate(-9deg) scale(1.08); box-shadow: 0 0 34px rgba(183,243,74,.48); }
+.navigacija-link { border: 1px solid transparent; transition: color .22s, background .22s, transform .22s, border-color .22s; }
+.navigacija-link:hover { transform: translateX(4px); background: rgba(183,243,74,.08); border-color: rgba(183,243,74,.12); color: #fff; }
+.navigacija-link.aktivna { background: linear-gradient(100deg, rgba(183,243,74,.17), rgba(183,243,74,.035)); border: 1px solid rgba(183,243,74,.18); box-shadow: inset 3px 0 var(--zelena), 0 8px 25px rgba(0,0,0,.13); }
+.navigacija-ikona { text-shadow: 0 0 15px rgba(183,243,74,.55); }
+.pomos-karticka { background: linear-gradient(145deg, #17283a, #101c2b); border-color: rgba(183,243,74,.2); box-shadow: inset 0 1px rgba(255,255,255,.04); }
+.glavna-sodrzina { animation: pojavuvanje .65s cubic-bezier(.2,.75,.25,1) both; }
+.nadnaslov, .sekcija-nadnaslov { color: #a5c66d; }
+h1 { color: #f4f8ff; text-shadow: 0 5px 28px rgba(0,0,0,.25); }
+.podnaslov { color: #91a1b5; }
+.kopce { border-radius: 12px; transition: transform .22s ease, box-shadow .22s ease, filter .22s ease, background .22s ease; }
+.kopce:hover { transform: translateY(-3px); }
+.kopce:active { transform: translateY(-1px) scale(.98); }
+.kopce-glavno { background: linear-gradient(135deg, #c8ff69, #a5e936); color: #17230b; box-shadow: 0 8px 25px rgba(163,230,53,.18), inset 0 1px rgba(255,255,255,.5); }
+.kopce-glavno:hover { background: linear-gradient(135deg, #d7ff8c, #b7f34a); box-shadow: 0 12px 32px rgba(163,230,53,.30); filter: saturate(1.12); }
+.kopce-svetlo { border-color: rgba(160,181,207,.2); background: #172538; color: #dce6f3; }
+.kopce-svetlo:hover { background: #20334a; border-color: rgba(183,243,74,.28); }
+.statistika-mreza { gap: 19px; }
+.statistika-karticka, .sekcija-panel {
+    position: relative; overflow: hidden;
+    border: 1px solid rgba(155,180,210,.13);
+    background: linear-gradient(145deg, rgba(22,36,54,.97), rgba(14,25,39,.98));
+    box-shadow: 0 16px 42px rgba(0,0,0,.18), inset 0 1px rgba(255,255,255,.035);
+    transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+}
+.statistika-karticka::before, .sekcija-panel::before {
+    content: ""; position: absolute; width: 180px; height: 180px; right: -95px; top: -115px;
+    border-radius: 50%; background: rgba(183,243,74,.075); filter: blur(2px); pointer-events: none;
+}
+.statistika-karticka:hover, .sekcija-panel:hover { border-color: rgba(183,243,74,.25); box-shadow: 0 22px 55px rgba(0,0,0,.26), 0 0 0 1px rgba(183,243,74,.035); }
+.statistika-karticka:hover { transform: translateY(-5px); }
+.statistika-oznaka { color: #9aabc0; }
+.statistika-ikona { border: 1px solid rgba(255,255,255,.07); }
+.statistika-ikona.zelena { background: rgba(183,243,74,.13); color: #c6ff6b; box-shadow: 0 0 22px rgba(183,243,74,.08); }
+.statistika-ikona.sina { background: rgba(72,157,235,.13); color: #75baff; }
+.statistika-ikona.portokalova { background: rgba(255,160,85,.13); color: #ffb274; }
+.statistika-broj { color: #f5f8fc; font-size: 32px; animation: brojNagore .7s .12s both; }
+.statistika-broj small, .statistika-opis { color: #8799ae; }
+.sekcija-panel { padding: 27px; }
+.sekcija-zaglavie h2, .modal-zaglavie h2 { color: #f0f5fc; }
+.sekcija-opis { color: #8fa0b5; }
+.status-oznaka { color: #9aabc0; }
+.status-oznaka span { background: #b7f34a; box-shadow: 0 0 0 4px rgba(183,243,74,.12), 0 0 13px rgba(183,243,74,.65); animation: pulsTochka 2s infinite; }
+.pole-grupa > span { color: #b9c7d8; }
+.pole-vnes { border: 1px solid rgba(155,180,210,.18); border-radius: 11px; background: #0c1725; color: #edf4fc; }
+.pole-vnes:focus { border-color: #b7f34a; background: #101f30; box-shadow: 0 0 0 3px rgba(183,243,74,.12), 0 0 22px rgba(183,243,74,.06); }
+.pole-vnes::placeholder { color: #64778d; }
+.pole-vnes option { background: #111c2b; color: #edf4fc; }
+.den-karticka { border: 1px solid rgba(155,180,210,.15); border-radius: 16px; background: rgba(10,20,33,.76); box-shadow: 0 8px 24px rgba(0,0,0,.12); transition: transform .25s, border-color .25s, box-shadow .25s; animation: kartickaVleguva .5s both; }
+.den-karticka:hover { transform: translateY(-3px); border-color: rgba(183,243,74,.27); box-shadow: 0 16px 35px rgba(0,0,0,.22); }
+.den-zaglavie { border-color: rgba(155,180,210,.12); background: linear-gradient(90deg, rgba(183,243,74,.08), rgba(183,243,74,.015)); }
+.den-ime { color: #e8f0fa; }
+.den-vreme, .den-dno { color: #8fa0b5; }
+.den-sodrzina { color: #dce6f3; }
+.prazno-den { color: #71849a; }
+.vezba-red { border-color: rgba(155,180,210,.11); transition: background .2s, padding .2s; }
+.vezba-red:hover { padding-left: 6px; background: rgba(183,243,74,.035); }
+.vezba-ime { color: #e3edf8; }
+.vezba-meta { color: #8396ab; }
+.malo-kopce { background: #1a2a3e; color: #a9bbcf; transition: transform .2s, background .2s, color .2s; }
+.malo-kopce:hover { transform: scale(1.09); background: rgba(183,243,74,.16); color: #c8ff69; }
+.malo-kopce.izbrisi:hover { background: rgba(255,100,100,.15); color: #ff8d87; }
+.den-dno { border-color: rgba(155,180,210,.12); }
+.den-dno strong { color: #d9e6f4; }
+.zavrsni-dejstva { position: relative; overflow: hidden; border: 1px solid rgba(183,243,74,.2); background: radial-gradient(ellipse at 85% 0%, rgba(183,243,74,.17), transparent 40%), linear-gradient(115deg, #17283a, #0e1a29); box-shadow: 0 18px 40px rgba(0,0,0,.2); }
+.zavrsni-dejstva::after { content: "✦"; position: absolute; right: 31%; top: -30px; color: rgba(183,243,74,.11); font-size: 130px; transform: rotate(14deg); pointer-events: none; }
+.zavrsni-dejstva strong { color: #f4f8ff; }
+.zavrsni-dejstva p { color: #a5b5c8; }
+.podnozje { color: #70839a; }
+.pozadina-modal { background: rgba(3,8,15,.78); backdrop-filter: blur(12px); }
+.modal-prozor { border: 1px solid rgba(183,243,74,.17); background: linear-gradient(145deg, #172538, #0d1826); color: #dce6f3; box-shadow: 0 30px 100px rgba(0,0,0,.55); animation: modalVleguva .28s cubic-bezier(.2,.8,.2,1) both; }
+.modal-zatvori { background: #22334a; color: #c0cede; transition: transform .2s, background .2s; }
+.modal-zatvori:hover { transform: rotate(90deg); background: #30465f; color: #fff; }
+.pole-pomos { color: #8295aa; }
+.verzija-aplikacija { color: #71849a; }
+@keyframes pojavuvanje { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes kartickaVleguva { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes brojNagore { from { opacity: .35; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulsTochka { 0%,100% { box-shadow: 0 0 0 4px rgba(183,243,74,.12), 0 0 10px rgba(183,243,74,.45); } 50% { box-shadow: 0 0 0 7px rgba(183,243,74,.035), 0 0 18px rgba(183,243,74,.75); } }
+@keyframes modalVleguva { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+::selection { background: rgba(183,243,74,.28); color: #fff; }
+:focus-visible { outline: 2px solid #b7f34a; outline-offset: 3px; }
+@media (max-width: 760px) {
+    .stranicna-navigacija { background: rgba(12,22,35,.97); border-right: 0; border-bottom: 1px solid rgba(183,243,74,.15); }
+    .navigacija-link:hover { transform: translateY(-2px); }
+    .statistika-karticka:hover, .den-karticka:hover { transform: none; }
+    .sekcija-panel { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+
+/* PDF преглед одвоен од главната страна */
+.pdf-modal-pozadina { display:none; position:fixed; inset:0; z-index:20000; padding:22px; background:rgba(3,10,20,.86); backdrop-filter:blur(12px); align-items:center; justify-content:center; }
+.pdf-modal-pozadina.otvorena { display:flex; }
+.pdf-modal-prozor { width:min(1180px,100%); height:min(92vh,1000px); display:flex; flex-direction:column; overflow:hidden; border:1px solid rgba(163,230,53,.24); border-radius:20px; background:#101c2b; box-shadow:0 30px 100px rgba(0,0,0,.55); }
+.pdf-modal-glava { display:flex; align-items:flex-start; justify-content:space-between; gap:20px; padding:18px 22px; color:#f4f7fb; }
+.pdf-modal-glava h2 { margin:3px 0 5px; font-size:20px; }
+.pdf-modal-glava p:last-child { margin:0; color:#9eacbd; font-size:13px; }
+#pdfPregledRamka { flex:1; width:100%; min-height:300px; border:0; background:#e9edf2; }
+.pdf-modal-akcii { display:flex; justify-content:flex-end; gap:10px; padding:15px 20px; border-top:1px solid rgba(255,255,255,.08); }
+@media(max-width:600px) { .pdf-modal-pozadina { padding:7px; } .pdf-modal-prozor { height:96vh; border-radius:13px; } .pdf-modal-glava { padding:14px; } .pdf-modal-akcii { padding:12px; flex-wrap:wrap; } .pdf-modal-akcii .kopce { flex:1; } }

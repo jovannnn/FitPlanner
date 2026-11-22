@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FitPlanner - креирај персонализиран неделен тренинг-план.">
+    <title>FitPlanner | Тренинг планер</title>
+    <link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+    <div class="aplikacija">
+        <!-- Навигација за десктоп и мобилни уреди -->
+        <aside class="stranicna-navigacija">
+            <a class="logo" href="#" aria-label="FitPlanner почетна">
+                <span class="logo-ikona">F</span>
+                <span>Fit<span class="logo-naglasok">Planner</span></span>
+            </a>
+
+            <div class="navigacija-naslov">РАБОТЕН ПРОСТОР</div>
+            <nav class="navigacija-linkovi" aria-label="Главна навигација">
+                <a class="navigacija-link aktivna" href="#pocetna">
+                    <span class="navigacija-ikona">▦</span> Преглед
+                </a>
+                <a class="navigacija-link" href="#raspored">
+                    <span class="navigacija-ikona">▤</span> Неделен распоред
+                </a>
+                <a class="navigacija-link" href="#informacii">
+                    <span class="navigacija-ikona">◉</span> Информации за планот
+                </a>
+            </nav>
+
+            <div class="navigacija-dno">
+                <div class="pomos-karticka">
+                    <div class="pomos-ikona">✦</div>
+                    <strong>Твојот напредок почнува денес</strong>
+                    <p>Планирај паметно и тренирај според планот.</p>
+                </div>
+                <span class="verzija-aplikacija">FitPlanner · Верзија 1.0</span>
+            </div>
+        </aside>
+
+        <!-- Главна содржина -->
+        <main class="glavna-sodrzina" id="pocetna">
+            <header class="gorna-lenta">
+                <div>
+                    <p class="nadnaslov">ТВОЈ ЛИЧЕН ТРЕНИНГ ПЛАНЕР</p>
+                    <h1>Креирај го својот план</h1>
+                    <p class="podnaslov">Организирај ги тренинзите и следи го неделниот напредок.</p>
+                </div>
+                <button class="kopce kopce-svetlo" id="kopceNovPlan" type="button">
+                    ＋ Нов план
+                </button>
+            </header>
+
+            <!-- Картички со автоматски пресметани статистики -->
+            <section class="statistika-mreza" aria-label="Статистика на тренинг планот">
+                <article class="statistika-karticka">
+                    <div class="statistika-vrh">
+                        <span class="statistika-oznaka">Тренинг денови</span>
+                        <span class="statistika-ikona zelena">▦</span>
+                    </div>
+                    <strong class="statistika-broj" id="brojDenovi">0</strong>
+                    <span class="statistika-opis">Денови со планирана активност</span>
+                </article>
+                <article class="statistika-karticka">
+                    <div class="statistika-vrh">
+                        <span class="statistika-oznaka">Вкупно време</span>
+                        <span class="statistika-ikona sina">◷</span>
+                    </div>
+                    <strong class="statistika-broj" id="vkupnoVreme">0 <small>мин.</small></strong>
+                    <span class="statistika-opis">Планирано време неделно</span>
+                </article>
+                <article class="statistika-karticka">
+                    <div class="statistika-vrh">
+                        <span class="statistika-oznaka">Вежби</span>
+                        <span class="statistika-ikona portokalova">✦</span>
+                    </div>
+                    <strong class="statistika-broj" id="brojVezbi">0</strong>
+                    <span class="statistika-opis">Вкупно вежби во распоредот</span>
+                </article>
+            </section>
+
+            <!-- Форма за основните информации на тренинг планот -->
+            <section class="sekcija-panel" id="informacii">
+                <div class="sekcija-zaglavie">
+                    <div>
+                        <p class="sekcija-nadnaslov">ОСНОВНИ ПОДАТОЦИ</p>
+                        <h2>Информации за планот</h2>
+                    </div>
+                    <span class="status-oznaka"><span></span> Автоматско зачувување</span>
+                </div>
+
+                <div class="forma-mreza">
+                    <label class="pole-grupa">
+                        <span>Име и презиме</span>
+                        <input class="pole-vnes" id="imeKorisnik" type="text" placeholder="Име и презиме">
+                    </label>
+                    <label class="pole-grupa">
+                        <span>Наслов на планот</span>
+                        <input class="pole-vnes" id="naslovPlan" type="text" placeholder="Пр. Мој неделен тренинг">
+                    </label>
+                    <label class="pole-grupa">
+                        <span>Цел на тренингот</span>
+                        <select class="pole-vnes" id="celTrening">
+                            <option value="Подобрување на кондицијата">Подобрување на кондицијата</option>
+                            <option value="Намалување на телесна тежина">Намалување на телесна тежина</option>
+                            <option value="Зголемување на мускулна маса">Зголемување на мускулна маса</option>
+                            <option value="Одржување на форма">Одржување на форма</option>
+                            <option value="Општо здравје и активност">Општо здравје и активност</option>
+                        </select>
+                    </label>
+                    <label class="pole-grupa">
+                        <span>Ниво на подготвеност</span>
+                        <select class="pole-vnes" id="nivoTrening">
+                            <option value="Почетник">Почетник</option>
+                            <option value="Средно ниво">Средно ниво</option>
+                            <option value="Напредно">Напредно</option>
+                        </select>
+                    </label>
+                    <label class="pole-grupa">
+                        <span>Датум на започнување</span>
+                        <input class="pole-vnes" id="datumPocetok" type="date">
+                    </label>
+                    <label class="pole-grupa">
+                        <span>Дополнителни забелешки</span>
+                        <input class="pole-vnes" id="zabeleskiPlan" type="text" placeholder="Дополнителни информации...">
+                    </label>
+                </div>
+            </section>
+
+            <!-- Неделен распоред во кој што корисникот додава вежби за секој ден -->
+            <section class="sekcija-panel" id="raspored">
+                <div class="sekcija-zaglavie raspored-zaglavie">
+                    <div>
+                        <p class="sekcija-nadnaslov">ПЛАНИРАЊЕ</p>
+                        <h2>Неделен распоред</h2>
+                        <p class="sekcija-opis">Додај вежби, одреди времетраење и организирај ја неделата.</p>
+                    </div>
+                    <button class="kopce kopce-glavno" id="kopceDodadiVezba" type="button">＋ Додај вежба</button>
+                </div>
+
+                <div class="denovi-mreza" id="denoviMreza">
+                </div>
+            </section>
+
+            <!-- Активности при зачувување на документот -->
+            <section class="zavrsni-dejstva">
+                <div>
+                    <strong>Подготвен си за следниот тренинг?</strong>
+                    <p>Зачувај го планот или преземи го како PDF документ.</p>
+                </div>
+                <div class="zavrsni-kopcinja">
+                    <button class="kopce kopce-svetlo" id="kopceZacuvaj" type="button">✓ Зачувај план</button>
+                    <button class="kopce kopce-glavno" id="kopcePdf" type="button">▣ Прегледај PDF</button>
+                </div>
+            </section>
+
+            <footer class="podnozje">
+                <span>© 2026 FitPlanner. Твојот план, твоето темпо.</span>
+                <span>Спортувај според твојот неделен план.</span>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Прозорец за додавање или уредување на вежба -->
+    <div class="pozadina-modal" id="pozadinaModal" aria-hidden="true">
+        <section class="modal-prozor" role="dialog" aria-modal="true" aria-labelledby="modalNaslov">
+            <div class="modal-zaglavie">
+                <div>
+                    <p class="sekcija-nadnaslov">ТРЕНИНГ АКТИВНОСТ</p>
+                    <h2 id="modalNaslov">Додај вежба</h2>
+                </div>
+                <button class="modal-zatvori" id="kopceZatvoriModal" type="button" aria-label="Затвори">×</button>
+            </div>
+
+            <form id="formaVezba">
+                <input type="hidden" id="urediVezbaId">
+                <label class="pole-grupa">
+                    <span>Ден</span>
+                    <select class="pole-vnes" id="denVezba" required></select>
+                </label>
+                <label class="pole-grupa">
+                    <span>Избери вежба според мускулната група</span>
+                    <select class="pole-vnes" id="imeVezba" required></select>
+                </label>
+                <div class="pole-grupa sopstvena-vezba" id="sopstvenaVezbaPolinja" hidden>
+                    <span>Твоја вежба</span>
+                    <input class="pole-vnes" id="sopstvenoImeVezba" type="text" maxlength="80" placeholder="Внеси име на вежбата">
+                    <select class="pole-vnes" id="sopstvenaKategorija" aria-label="Мускулна група">
+                        <option value="Гради">Гради</option><option value="Грб">Грб</option>
+                        <option value="Раменици">Раменици</option><option value="Бицепс">Бицепс</option>
+                        <option value="Трицепс">Трицепс</option><option value="Квадрицепс">Квадрицепс</option>
+                        <option value="Задна ложа">Задна ложа</option><option value="Глутеус">Глутеус</option>
+                        <option value="Листови">Листови</option><option value="Стомачни и core">Стомачни и core</option>
+                        <option value="Кардио">Кардио</option><option value="Мобилност и истегнување">Мобилност и истегнување</option>
+                        <option value="Друго">Друго</option>
+                    </select>
+                    <small class="pole-pomos">Не ја најде вежбата? Внеси сопствено име и избери мускулна група.</small>
+                </div>
+                <div class="forma-mreza forma-mreza-tesna">
+                    <label class="pole-grupa">
+                        <span>Времетраење (минути)</span>
+                        <input class="pole-vnes" id="vremeVezba" type="number" min="1" max="600" value="10" required>
+                    </label>
+                    <label class="pole-grupa">
+                        <span>Број на серии</span>
+                        <input class="pole-vnes" id="seriiVezba" type="number" min="1" max="50" value="3">
+                    </label>
+                    <label class="pole-grupa">
+                        <span>Повторувања</span>
+                        <input class="pole-vnes" id="povtoruvanjaVezba" type="text" placeholder="Пр. 12 или 30 сек.">
+                    </label>
+                    <label class="pole-grupa">
+                        <span>Пауза (секунди)</span>
+                        <input class="pole-vnes" id="pauzaVezba" type="number" min="0" max="600" value="60">
+                    </label>
+                </div>
+                <label class="pole-grupa">
+                    <span>Забелешка</span>
+                    <textarea class="pole-vnes pole-tekst" id="zabeleskaVezba" rows="3" placeholder="Дополнителни инструкции за вежбата..."></textarea>
+                </label>
+                <div class="modal-dejstva">
+                    <button class="kopce kopce-svetlo" id="kopceOtkaziModal" type="button">Откажи</button>
+                    <button class="kopce kopce-glavno" type="submit">Зачувај вежба</button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <!-- Скриен html образец што се повикува -->
+    <div class="pdf-obrazec" id="pdfObrazec"></div>
+
+    <!-- Преглед на pdf документ пред да се превзема -->
+    <div class="pdf-modal-pozadina" id="pdfModal" aria-hidden="true">
+        <section class="pdf-modal-prozor" role="dialog" aria-modal="true" aria-labelledby="pdfModalNaslov">
+            <header class="pdf-modal-glava">
+                <div><p class="sekcija-nadnaslov">FITPLANNER ИЗВЕШТАЈ</p><h2 id="pdfModalNaslov">Преглед на тренинг план</h2><p>Провери го документот, па избери „Зачувај како PDF“ во прозорецот за печатење.</p></div>
+                <button class="malo-kopce" id="zatvoriPdfPregled" type="button" aria-label="Затвори">×</button>
+            </header>
+            <iframe id="pdfPregledRamka" title="Преглед на документ за печатење како PDF"></iframe>
+            <footer class="pdf-modal-akcii">
+                <button class="kopce kopce-svetlo" id="zatvoriPdfPregledDno" type="button">Назад кон распоредот</button>
+                <button class="kopce kopce-glavno" id="prezemiPregledPdf" type="button">⇩ Печати / Зачувај како PDF</button>
+            </footer>
+        </section>
+    </div>
+
+    <!-- Вчитување на JS датотеки -->
+    <script src="js/vezbi.js"></script>
+    <script src="js/planer.js"></script>
+    <script src="js/pdf.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
